@@ -26,12 +26,29 @@ namespace lab9
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            Pen bluepen = new Pen(Color.Blue, 2);
-            g.DrawRectangle(bluepen, 10, 10, 100, 100);
-            bluepen.Dispose();
-            Pen somepen = new Pen(Color.FromArgb(255, 120, 200));
-            g.DrawEllipse(somepen, 20, 20, 200, 200);
-            somepen.Dispose();
+            Pen[] obpen = new Pen[11];
+            for(int i =0;i<11;i++)
+            {
+                obpen[i] = new Pen(Color.Blue, 9);
+            }
+            obpen[0].EndCap = LineCap.AnchorMask;
+            obpen[1].EndCap = LineCap.ArrowAnchor;
+            obpen[2].EndCap = LineCap.Custom;
+            obpen[3].EndCap = LineCap.DiamondAnchor;
+            obpen[4].EndCap = LineCap.Flat;
+            obpen[5].EndCap = LineCap.NoAnchor;
+            obpen[6].EndCap = LineCap.Round;
+            obpen[7].EndCap = LineCap.RoundAnchor;
+            obpen[8].EndCap = LineCap.Square;
+            obpen[9].EndCap = LineCap.SquareAnchor;
+            obpen[10].EndCap = LineCap.Triangle;
+            
+            for(int i =0;i<11;i++)
+            {
+                g.DrawLine(obpen[i],10,10 + 20 * i, 200,10 + 20 * i);
+                obpen[i].Dispose();
+            }
+            g.Dispose();
         }
     }
 }
